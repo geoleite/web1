@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifs.dto.AlunoDTO;
 import br.com.ifs.model.Aluno;
 import br.com.ifs.service.AlunoService;
+import br.com.ifs.service.AvaliacaoService;
 
 @RestController
 @RequestMapping("exemplo")
@@ -21,6 +22,8 @@ public class ExemploRest {
 
 	@Autowired
 	private AlunoService alunoService;
+	@Autowired
+	private AvaliacaoService avaliacaoService;
 	
 	@RequestMapping(value = "/olamundo", method = RequestMethod.GET)
 	public Object olamundo() {
@@ -43,5 +46,9 @@ public class ExemploRest {
 		return alunoService.getAll();
 	}
 	
+	@RequestMapping(value = "/getAvaliacoesByAluno", method = RequestMethod.GET)
+	public Object getAvaliacoesByAluno(@RequestBody Aluno aluno) throws Exception {
+		return avaliacaoService.getByAluno(aluno.getId());
+	}
 	
 }
