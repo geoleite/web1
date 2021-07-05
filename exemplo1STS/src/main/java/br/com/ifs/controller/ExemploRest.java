@@ -15,6 +15,7 @@ import br.com.ifs.dto.AlunoDTO;
 import br.com.ifs.model.Aluno;
 import br.com.ifs.service.AlunoService;
 import br.com.ifs.service.AvaliacaoService;
+import br.com.ifs.service.ClienteWSBinance;
 
 @RestController
 @RequestMapping("exemplo")
@@ -24,6 +25,8 @@ public class ExemploRest {
 	private AlunoService alunoService;
 	@Autowired
 	private AvaliacaoService avaliacaoService;
+	@Autowired
+	private ClienteWSBinance clienteWSBinance;
 	
 	@RequestMapping(value = "/olamundo", method = RequestMethod.GET)
 	public Object olamundo() {
@@ -50,5 +53,6 @@ public class ExemploRest {
 	public Object getAvaliacoesByAluno(@RequestBody Aluno aluno) throws Exception {
 		return avaliacaoService.getByAluno(aluno.getId());
 	}
+
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifs.service.ClienteWSBinance;
 
+
 @RestController
 @RequestMapping("cripto")
 public class CriptoController {
@@ -15,8 +16,21 @@ public class CriptoController {
 	@Autowired
 	ClienteWSBinance clienteWSBinance;
 	
+
 	@RequestMapping(value = "/loadData/{moeda}/{intervalo}", method = RequestMethod.GET)
 	public Object loadData(@PathVariable String moeda, @PathVariable String intervalo) {
 		return clienteWSBinance.loadDataBinance(moeda, intervalo);
 	}
+	
+	@RequestMapping(value = "/getMoedas", method = RequestMethod.GET)
+	public Object getMoedas() throws Exception {
+		clienteWSBinance.loadMoedas();
+		return "ok";
+	}
+
+	@RequestMapping(value = "/getValorMoeda/{simbolo}", method = RequestMethod.GET)
+	public Object getMoedas(@PathVariable String simbolo) throws Exception {
+		return clienteWSBinance.getValorAtual(simbolo);
+	}
+	
 }
