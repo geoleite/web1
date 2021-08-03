@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.ifs</groupId>
 	<artifactId>exemplo1STS</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>exemplo1STS</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -64,6 +64,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>				
 			</plugin>
 		</plugins>
 	</build>
